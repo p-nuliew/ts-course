@@ -9,5 +9,6 @@
     "strictPropertyInitialization": true,  /* Enable strict checking of property initialization in classes. */
     "noImplicitThis": true,                /* Raise error on 'this' expressions with an implied 'any' type. */
     "alwaysStrict": false,                  /* Parse in strict mode and emit "use strict" for each source file. */
+    "lib": ["ES2022"],
   }
 }
