@@ -1,0 +1,14 @@
+{
+  "name": "ts-course",
+  "version": "1.0.0",
+  "description": "ts入门练习demo",
+  "main": "HelloWorld.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "chenweilun",
+  "license": "ISC",
+  "dependencies": {
+    "typescript": "^3.9.2"
+  }
+}
