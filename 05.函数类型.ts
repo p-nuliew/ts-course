@@ -66,7 +66,8 @@
 {
   interface Person {
     name: string;
-    say(this: Person): void
+    say(this: Person): void;
+    getAge: (age: number) => number;
   }
   const person: Person = {
     name: 'captain',
