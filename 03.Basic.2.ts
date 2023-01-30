@@ -1,7 +1,7 @@
 // 数组
 let arrayOfNumber: number[] = [1, 2, 3];  // []定义
 let arrayOfNumber2: Array<number> = [4, 5, 6];  // 泛型定义
-// 更推荐[]这种方式，可以避免与JSX语法冲突
+// 更推荐 number[] 这种方式，可以避免与JSX语法冲突
 
 // 元祖：可以限制数组的个数和类型
 // 好比 react hooks 里的 useState。const [count, setCount] = useState;
@@ -30,7 +30,7 @@ if (x === 12) {
 // let num: number = result;  // 提示 ts(2322)
 // let abc: any = result;
 
-// 想要做操 unknown 类型，必须缩小类型，否则对 unknown 的任何操作都会报错
+// 想要操作 unknown 类型，必须缩小类型，否则对 unknown 的任何操作都会报错
 // result.toFixed()  提示 ts(2574)
 // 缩小类型(所有的类型缩小手段对 unknown 都有效)
 if (typeof result === 'number') {
