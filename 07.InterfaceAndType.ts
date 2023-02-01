@@ -201,3 +201,9 @@ getStudentInfo({ name: 'tom', age: () => 20 })
   }
 }
 
+
+enum EnumA { A = 'A' }
+enum EnumB { A = 'A' }
+type AliasNotCopy = EnumA;
+const funA: (a: EnumA) => void = (a: AliasNotCopy) => void 0; // ok
+const funB: (a: EnumA) => void = (a: EnumB) => void 0; // ts(2322) 错误

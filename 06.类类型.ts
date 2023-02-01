@@ -65,6 +65,9 @@
 
 // 修饰符
 // public private protected
+//  public 表示在任何地方可见、是公有的
+//  private 只有在类的内部可见
+//  protected 仅在类内部及子类内部中可见
 class Father {
   public firstName: string;
   private lastName: string = 'Stark';
@@ -75,8 +78,28 @@ class Father {
   }
 }
 const father = new Father('Tony')
-father.firstName
+father.firstName  // 公有属性可以在任意地方调用
 father.lastName // ts(2341)属性“lastName”为私有属性，只能在类“Father”中访问
-//  public 表示在任何地方可见、是公有的
-//  private 只有在类的内部可见
-//  protected 仅在类自身及子类内部中可见
+
+class Son {
+  public firstName: string;
+  protected lastName: string = 'Stark';
+  constructor(firstName: string) {
+    this.firstName = firstName;
+    this.lastName; // ok
+  }
+}
+
+ class GrandSon extends Son {
+    constructor(firstName: string) {
+      super(firstName);
+    }
+
+    public getMyLastName() {
+      return this.lastName;
+    }
+ }
+
+ const grandSon = new GrandSon('Tony');
+ console.log(grandSon.getMyLastName()); // => "Stark"
+ grandSon.lastName; // 属性“lastName”受保护，只能在类“Son”及其子类中访问
