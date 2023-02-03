@@ -74,6 +74,25 @@ getStudentInfo({ name: 'tom', age: () => 20 })
   tom.age = 30  // ts(2540) 无法分配到 "age" ，因为它是只读属性
 }
 
+// 接口定义函数类型
+{
+  // 接口定义函数类型：需要给接口定义一个调用签名
+  // 签名格式：「参数列表: 返回值类型」，参数列表的参数都需要名字和类型
+  interface MyFn {
+    (num: number): number
+  }
+  let f: MyFn = (arg: number) => arg
+}
+// 接口中的函数类型
+interface IncludeFn {
+  // 两种写法效果一样
+  add: (num: number) => number;
+  // add(num: number): number
+}
+const o: IncludeFn = {
+  add: (arg: number) => arg,
+}
+const r = o.add(1)
 
 // 索引签名
 // 格式：  “[索引名: 类型]”
