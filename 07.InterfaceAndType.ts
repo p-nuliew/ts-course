@@ -6,7 +6,7 @@ function Student(person: { name: string, age: () => number }) {
   console.log(person.name, person.age());
 }
 Student({ name: 'Tom', age: () => 20 })
-Student({ name: 2)  // ts(2322) 不能将类型“number”分配给类型“string”
+Student({ name: 2})  // ts(2322) 不能将类型“number”分配给类型“string”
 Student({ name: 'Tom')  // ts(2345) 类型 "{ name: string; }" 中缺少属性 "age"
 Student({ name: 'Tom', age: () => 20, id: 2 })  // ts(2345) “id”不在类型“{ name: string; age: () => number; }”中
 let ts = { name: 'Tom', age: () => 20, id: 2 }

@@ -87,6 +87,13 @@ bg('blue')  // ts(2345) 类型“"blue"”的参数不能赋给类型“Color”
   }
 }
 
+// 字面量类型的拓宽: literal widening
+{
+  let x = undefined;  // any
+  var yy = undefined; // any
+  const yyy = undefined // undefined
+}
+
 // 为什么通过 let 和 const 定于的赋予了相同值的变量，其推断出来的类型不一样
 {
   const str = 'this is string'; // str: 'this is string'

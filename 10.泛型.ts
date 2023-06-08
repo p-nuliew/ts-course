@@ -30,11 +30,23 @@
     return param
   }
 
-  reflectSpecified(1) // ok
-  reflectSpecified('str') // ok
-  reflectSpecified(true)  // ok
+  reflectSpecified(1) // ok 类型为1
+  reflectSpecified('str') // ok 类型为'str'
+  reflectSpecified(true)  // ok 类型为true
   reflectSpecified([])  // ts(2345) 类型“never[]”的参数不能赋给类型“string | number | boolean”的参数。
 }
+// 注意：为什么不直接使用枚举，因为我们的前提是返回同入参类型一样的类型，而不是多种类型
+{
+  function reflectSpecified2(param: string | number | boolean) {
+    return param
+  }
+
+  reflectSpecified2(1) // ok  类型为string | number | boolean
+  reflectSpecified2('str') // ok  类型为string | number | boolean
+  reflectSpecified2(true)  // ok  类型为string | number | boolean
+  reflectSpecified2([])  // ts(2345) 类型“never[]”的参数不能赋给类型“string | number | boolean”的参数。
+}
+
 
 
 // 如何描述数组的map方法类型
@@ -121,3 +133,32 @@ interface Page<T> {
 function fetchData3(): Promise<Result<Page<Item[]>>> {
   return http.get('api/page/array')
 }
+
+
+// LoginCodeResponseData 和 LoginCodeResponseData2 有何区别？
+// 好像没啥区别，泛型更为直观一点
+interface IApiResponseData<T> {
+  code: number
+  data: T
+  message: string
+}
+type LoginCodeResponseData = IApiResponseData<{ key: string; logoImg: string; id: string }>
+
+interface IApiResponseData2 {
+  code: number
+  message: string
+}
+type LoginCodeResponseData2 = IApiResponseData2 & { data: { key: string; logoImg: string; id: string } }
+
+const ddd = {
+  code: 200,
+  data: {
+    key: 'key',
+    logoImg: 'str',
+    id: 'str'
+  },
+  message: 'str'
+}
+
+const d1: LoginCodeResponseData = ddd
+const d2: LoginCodeResponseData2 = ddd
